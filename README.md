@@ -1,5 +1,20 @@
 ## How to Run
 
+### 一键启动（推荐）
+
+```bash
+# Linux / macOS
+./start.sh
+
+# Windows
+start.bat
+```
+
+启动脚本会引导你：
+1. 选择运行方式（Docker 或 本地 Python）
+2. 输入今日日期和前日日期
+3. 自动检查环境并执行
+
 ### Docker 启动
 
 ```bash
@@ -22,8 +37,8 @@ cd backend
 # 安装依赖
 pip install -r requirements.txt
 
-# 运行脚本
-python check_enterprise.py
+# 运行脚本（使用环境变量配置日期）
+TODAY_DATE=20251214 PREVIOUS_DATE=20251213 python check_enterprise.py
 ```
 
 ## Services
