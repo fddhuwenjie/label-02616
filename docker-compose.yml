@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  enterprise-checker:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+        - linux/arm64
+    container_name: enterprise-checker
+    volumes:
+      # 挂载本地 Downloads 目录到容器
+      - ./Downloads:/app/Downloads
+    environment:
+      - PYTHONUNBUFFERED=1
+      - BASE_PATH=/app/Downloads
+      - TODAY_DATE=${TODAY_DATE:-20251214}
+      - PREVIOUS_DATE=${PREVIOUS_DATE:-20251213}
+    restart: "no"
