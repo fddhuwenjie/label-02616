@@ -187,13 +187,8 @@ class EnterpriseChecker:
         period_value = row.get('营业期限', '')
         period = str(period_value).strip() if not pd.isna(period_value) else ''
         
-        # 精确检查"长期"：只在营业期限字段本身判断
-        # 避免企业名称包含"长期"导致误判
-        if period in ('长期', '长期有效', '无固定期限'):
-            return True, f"营业期限: {period} [长期有效]"
-        
-        # 检查是否以"长期"开头或结尾（如 "至 长期"）
-        if period.endswith('长期') or period.startswith('长期'):
+        # 检查是否包含"长期"两字，若包含则视为未过期
+        if '长期' in period or '无固定期限' in period:
             return True, f"营业期限: {period} [长期有效]"
         
         # 尝试解析日期

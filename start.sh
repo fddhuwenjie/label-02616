@@ -39,10 +39,11 @@ echo ""
 
 # 选择运行方式
 echo "请选择运行方式:"
-echo "  1) Docker 运行 (推荐)"
+echo "  1) Docker 运行 (推荐，默认)"
 echo "  2) 本地 Python 运行"
 echo ""
-read -p "请输入选项 [1/2]: " choice
+read -p "请输入选项 [1/2，直接回车默认1]: " choice
+choice=${choice:-1}
 
 # 输入日期
 echo ""
